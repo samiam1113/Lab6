@@ -1,7 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
+	int mid=0;
+	if(low<=high) {
+		mid = (low+high)/2;
+		//checks if needed value is less than the middle
+		if(value<numbers[mid]) {
+			return search(numbers,low,mid-1,value);
+		}
+		//checks if value is more than the middle
+		else if(value>numbers[mid]) {
+			return search(numbers,mid+1,high,value);
+		}
+		//checks if value is the middle
+		else if(value==numbers[mid]) {
+			return mid;
+		}
+	}
 	return -1;
 }
 
